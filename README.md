@@ -14,10 +14,16 @@ Paw-tel is a full-stack application utiltizing MERN. In this application, users 
 ## Group Roles
 
 ### Dagm
+* user components 
+* auth
 
 ### Kathy
+* some user backend
+* css/bootstrap
 
 ### Louisa
+* some user backend
+* skeleton
 
 ## Sprints
 
@@ -38,12 +44,19 @@ Paw-tel is a full-stack application utiltizing MERN. In this application, users 
 * Work on user routes 
 
 #### Tuesday
+* pets component
+* hotel component
 
 #### Wednesday
+* MVP
 
 #### Thursday
+* debugging
+* css/boot
 
 #### Friday
+* debugging
+* css/boot
 
 ## Routes
 ### User and Admin RESTful routing chart
