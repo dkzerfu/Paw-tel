@@ -37,6 +37,14 @@ Paw-tel is a full-stack application utiltizing MERN. In this application, users 
 #### Friday
 
 ## Routes
+### User RESTful routing chart
+| Method | URL | Functionality | view |
+|--------|-----|---------------|------|
+| GET | localhost:3000/api-v1/users | show all users | redirect to /users
+| POST  | localhost:3000/api-v1/users/register | create new user |  redirect to '/'
+| GET | localhost:3000/api-v1/users/login | show log in page | render to /user/login
+| POST | localhost:3000/api-v1/users/login | login user | redirect to '/profile'
+
 
 ## Database Schema
 
