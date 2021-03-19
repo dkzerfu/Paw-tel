@@ -38,6 +38,25 @@ Paw-tel is a full-stack application utiltizing MERN. In this application, users 
 #### Friday
 
 ## Routes
+### User and Admin RESTful routing chart
+| Method | URL | Functionality | view |
+|--------|-----|---------------|------|
+| GET | localhost:3000/api-v1/users | Get all users (admin) | redirect to /users
+| GET | localhost:3000/api-v1/users/:id | Get single user by id (admin) | redirect to /users/:id
+| POST  | localhost:3000/api-v1/users | Add user to database (admin) |  redirect to '/profile'
+| PUT  | localhost:3000/api-v1/users/:id | Update user in database (admin) |  redirect to '/users/:id'
+| DELETE | localhost:3000/api-v1/users/:id | Delete user from database (admin&userProfile owner) | redirect to '/users'
+
+### Authentication RESTful routing chart for Users only
+| Method | URL | Functionality | view |
+|--------|-----|---------------|------|
+| POST | localhost:3000/api-v1/register | Add user to database with encrypted password | redirect to /auth/register
+| POST | localhost:3000/api-v1/auth/login | validate users input to the database | redirect to /auth/login
+| GET | localhost:3000/api-v1/auth/user | if find get it from the db | redirect to /profile
+| POST | localhost:3000/api-v1/auth/forgetpassword | Generate password token and send email | redirect to /forgetPassword
+| PUT | localhost:3000/api-v1/auth/resetPassword/{token} | Reset user password via token | redirect to /auth/resetPassword
+| PUT | localhost:3000/api-v1/auth/updatePassword | Update logged in user password, send in the body currentPassword and newPassword | redirect to /auth/updatePassword
+| GET | localhost:3000/api-v1/auth/logout | Clear token cookie | redirect to '/'.
 
 ## Database Schema
 
