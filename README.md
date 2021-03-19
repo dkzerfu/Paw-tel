@@ -71,11 +71,11 @@ Paw-tel is a full-stack application utiltizing MERN. In this application, users 
 ![main](/public/img/schema.PNG)
 
 ## Wireframes
-![main](/public/img/petsprofile.PNG)
-![main](/public/img/petprofile.PNG)
-![main](/public/img/hotelprofile.PNG)
-![main](/public/img/hotellist.PNG)
-![main](/public/img/favoritehotels.PNG)
+![main](/public/img/petsprofile.png)
+![main](/public/img/petprofile.png)
+![main](/public/img/hotelprofile.png)
+![main](/public/img/hotellist.png)
+![main](/public/img/favoritehotels.png)
 
 ## Technologies and APIs
 
