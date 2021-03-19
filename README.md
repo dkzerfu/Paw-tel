@@ -76,6 +76,8 @@ Paw-tel is a full-stack application utiltizing MERN. In this application, users 
 ![main](/public/img/hotelprofile.png)
 ![main](/public/img/hotellist.png)
 ![main](/public/img/favoritehotels.png)
+![main](/public/img/hosthotelsprofile.png)
+![main](/public/img/hosthotelprofile.png)
 
 ## Technologies and APIs
 
