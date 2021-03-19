@@ -13,7 +13,28 @@ Paw-tel is a full-stack application utiltizing MERN. In this application, users 
 
 ## Group Roles
 
+### Dagm
+
+### Kathy
+
+### Louisa
+
 ## Sprints
+
+#### Friday 3/19/21
+* Test APIs
+* Complete ReadMe - Routes, schemas
+* Assign roles
+
+#### Monday 3/22/21
+
+#### Tuesday
+
+#### Wednesday
+
+#### Thursday
+
+#### Friday
 
 ## Routes
 
