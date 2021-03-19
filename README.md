@@ -22,12 +22,20 @@ Paw-tel is a full-stack application utiltizing MERN. In this application, users 
 ## Sprints
 
 #### Friday 3/19/21
+* Soft/hard pitches
 * Test APIs
-* Complete ReadMe - Routes, schemas
-* Assign roles
+* Complete ReadMe - routes, schemas, sprints
 * Make wireframes
+* Create server and client side folders
+* Assign roles
 
-#### Monday 3/22/21
+#### Saturday and Sunday
+* Research 
+* plan basic crud routes
+
+#### Monday 
+* Render user side
+* Work on user routes 
 
 #### Tuesday
 
@@ -61,6 +69,13 @@ Paw-tel is a full-stack application utiltizing MERN. In this application, users 
 ## Database Schema
 
 ![main](/public/img/schema.PNG)
+
+## Wireframes
+![main](/public/img/petsprofile.PNG)
+![main](/public/img/petprofile.PNG)
+![main](/public/img/hotelprofile.PNG)
+![main](/public/img/hotellist.PNG)
+![main](/public/img/favoritehotels.PNG)
 
 ## Technologies and APIs
 
