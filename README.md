@@ -25,6 +25,7 @@ Paw-tel is a full-stack application utiltizing MERN. In this application, users 
 * Test APIs
 * Complete ReadMe - Routes, schemas
 * Assign roles
+* Make wireframes
 
 #### Monday 3/22/21
 
