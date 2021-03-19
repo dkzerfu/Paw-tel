@@ -7,9 +7,9 @@ Paw-tel is a full-stack application utiltizing MERN. In this application, users 
 ## User Stories
 
 * As a user (AAU) I want to be able to create, edit or delete a profile for my pet with their needs (medicines, care guidelines etc)
-* (AAU) I want to be able to be able to find an appropriate “pet air bnb” for my pet. 
-* (AAU) I want to be able to browse and favorite hotel profiles.
-* (AAU) I want to be able to search by location and by air bnb specialty
+* (AAU) I want to be able to be able to find an appropriate “pet air bnb” in Seattle for my pet. 
+* (AAU) I want to be able to browse and favorite housing profiles.
+
 
 ## Group Roles
 
@@ -109,5 +109,6 @@ Paw-tel is a full-stack application utiltizing MERN. In this application, users 
 * A user can create a profile as a “hotel/airbnb”
 * Include an API for actual pet hotels 
 * Skeleton
+* Search by location
 
 ## Resources
