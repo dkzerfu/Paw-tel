@@ -14,10 +14,16 @@ Paw-tel is a full-stack application utiltizing MERN. In this application, users 
 ## Group Roles
 
 ### Dagm
+* user components 
+* auth
 
 ### Kathy
+* some user backend
+* css/bootstrap
 
 ### Louisa
+* some user backend
+* skeleton
 
 ## Sprints
 
