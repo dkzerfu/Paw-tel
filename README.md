@@ -60,6 +60,8 @@ Paw-tel is a full-stack application utiltizing MERN. In this application, users 
 
 ## Database Schema
 
+![main](/public/img/schema.PNG)
+
 ## Technologies and APIs
 
 #### Technologies
