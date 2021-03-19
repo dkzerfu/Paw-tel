@@ -98,5 +98,3 @@ Paw-tel is a full-stack application utiltizing MERN. In this application, users 
 * Skeleton
 
 ## Resources
-
-:)
