@@ -1,0 +1,18 @@
+git remote -v
+
+git remote add upstream git@github.com:kchu01/Paw-tel.git
+
+
+git remote -v
+
+git checkout -b louisa   
+
+code .
+
+git add .
+
+git commit -m ":)"
+
+git push origin louisa
+
+git pull upstream main
