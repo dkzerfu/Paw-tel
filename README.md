@@ -91,7 +91,7 @@ DELETE | /pets/:id | Removes a pet from the user's pet list | Redirect to /pets
 ### RESTful routing chart for Hotels
 | Method | URL | Functionality | view |
 |--------|-----|---------------|------|
-GET | /hotels | Displays the ho's hotel list | Render hotels
+GET | /hotels | Displays the host's hotel list | Render hotels
 POST | /hotels | Adds a hotel to the host's hotel list via a form | Redirect to /hotels
 GET | /hotels/:id | Show details about a specific hotel from the host's hotel list | Render hotels/:id
 PUT | /hotels/:id| Updates a specific hotel's information | Redirect to /hotels/:id
