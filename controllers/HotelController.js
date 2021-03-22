@@ -4,6 +4,7 @@ const Hotel = require('../models/Hotel')
 // Create
 router.post('/', async(req, res) => {
     try {
+        console.dir(req.body)
         const newHotel = await Hotel.create({
             hotel_name: req.body.hotel_name,
             zipcode: req.body.zipcode,
@@ -53,7 +54,7 @@ router.put('/:id', async (req, res) => {
             phone_number: req.body.phone_number,
             email: req.body.email
         })
-        res.json(updatedHotel)
+        // res.json(updatedHotel)
     } catch (err) {
         console.log(err)
     }
