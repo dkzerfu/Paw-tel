@@ -16,8 +16,11 @@ const rowdyResults = rowdy.begin(app)
 app.use(morgan('tiny'))
 app.use(cors())
 
+// request body parser
+app.use(express.json())
+
 // tell express to listen
 app.listen(PORT, () => {
     rowdyResults.print()
-    console.log(`you are listening to the sound of ${PORT} in the morning`)
+    console.log(`welcome to ${PORT} in the morning`)
 })
