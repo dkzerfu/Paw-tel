@@ -15,7 +15,7 @@ router.post('/', async(req, res) => {
         })
         res.json(newHotel)
     } catch(err) {
-        console.log(err)
+        res.status(400).json({ msg: 'Unable to register hotel' })
     }
 })
 
@@ -25,7 +25,7 @@ router.get('/', async(req, res) => {
         const allHotels = await Hotel.find({})
         res.json(allHotels)
     } catch (err) {
-        console.log(err)
+        res.status(400).json({ msg: 'Unable find hotels' })
     }
 })
 
@@ -54,9 +54,11 @@ router.put('/:id', async (req, res) => {
             phone_number: req.body.phone_number,
             email: req.body.email
         })
-        // res.json(updatedHotel)
+        res.json(updatedHotel)
     } catch (err) {
-        console.log(err)
+        res.json({
+            msg: "Unable to update hotel"
+        })
     }
 })
 
@@ -66,7 +68,9 @@ router.delete('/:id', async (req, res) => {
         const deletedHotel = await Hotel.findByIdAndDelete(req.params.id)
         res.json(deletedHotel)
     } catch (err) {
-        console.log(err)
+        res.json({
+            msg: "Unable to delete hotel"
+        })
     }
 })
 
