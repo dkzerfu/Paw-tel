@@ -4,7 +4,6 @@ const Hotel = require('../../models/Hotel')
 // Create
 router.post('/', async(req, res) => {
     try {
-        console.dir(req.body)
         const newHotel = await Hotel.create({
             hotel_name: req.body.hotel_name,
             zipcode: req.body.zipcode,
@@ -15,6 +14,7 @@ router.post('/', async(req, res) => {
         })
         res.json(newHotel)
     } catch(err) {
+        console.log(err)
         res.status(400).json({ msg: 'Unable to register hotel' })
     }
 })
@@ -25,6 +25,7 @@ router.get('/', async(req, res) => {
         const allHotels = await Hotel.find({})
         res.json(allHotels)
     } catch (err) {
+        console.log(err)
         res.status(400).json({ msg: 'Unable find hotels' })
     }
 })
@@ -37,8 +38,9 @@ router.get('/:id', async(req, res) => {
             res.json(foundHotel)
         }
     } catch (err) {
+        console.log(err)
         res.json({
-            msg: "A hotel with that id hasn't been found"
+            msg: 'A hotel with that id has not been found'
         })
     }
 })
@@ -56,8 +58,9 @@ router.put('/:id', async (req, res) => {
         })
         res.json(updatedHotel)
     } catch (err) {
+        console.log(err)
         res.json({
-            msg: "Unable to update hotel"
+            msg: 'Unable to update hotel'
         })
     }
 })
@@ -68,8 +71,9 @@ router.delete('/:id', async (req, res) => {
         const deletedHotel = await Hotel.findByIdAndDelete(req.params.id)
         res.json(deletedHotel)
     } catch (err) {
+        console.log(err)
         res.json({
-            msg: "Unable to delete hotel"
+            msg: 'Unable to delete hotel'
         })
     }
 })
