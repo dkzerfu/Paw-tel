@@ -10,7 +10,8 @@ router.post('/', async (req, res) => {
             age: req.body.age,
             weight: req.body.weight,
             special_needs: req.body.special_needs,
-            medications: req.body.medications
+            medications: req.body.medications,
+            image_url: req.body.image_url
         })
         res.json(newPet)
     } catch(err) {
