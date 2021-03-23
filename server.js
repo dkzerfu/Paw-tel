@@ -19,10 +19,6 @@ app.use(cors())
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 
-// controllers
-app.use('/hotels', require('./controllers/HotelController'))
-
-
 // request body parser
 app.use(express.json())
 
@@ -32,6 +28,8 @@ app.get('/', (req, res) => {
 
 // Controllers
 app.use('/api-v1/users', require('./controllers/api-v1/users'))
+app.use('/api-v1/hotels', require('./controllers/api-v1/HotelController'))
+app.use('/api-v1/pets', require('./controllers/api-v1/PetController'))
 
 // tell express to listen
 app.listen(PORT, () => {
