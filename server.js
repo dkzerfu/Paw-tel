@@ -26,6 +26,13 @@ app.use('/hotels', require('./controllers/HotelController'))
 // request body parser
 app.use(express.json())
 
+app.get('/', (req, res) => {
+    res.json({msg: 'hello world'})
+})
+
+// Controllers
+app.use('/api-v1/users', require('./controllers/api-v1/users'))
+
 // tell express to listen
 app.listen(PORT, () => {
     rowdyResults.print()

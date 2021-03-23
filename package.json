@@ -26,5 +26,8 @@
   "bugs": {
     "url": "https://github.com/LouisaJohnston/Paw-tel/issues"
   },
-  "homepage": "https://github.com/LouisaJohnston/Paw-tel#readme"
+  "homepage": "https://github.com/LouisaJohnston/Paw-tel#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
 }
