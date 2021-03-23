@@ -55,7 +55,8 @@ router.put('/:id', async (req, res) => {
             specialty: req.body.specialty,
             weight_limit_lb: req.body.weight_limit_lb,
             phone_number: req.body.phone_number,
-            email: req.body.email
+            email: req.body.email,
+            image_url: req.body.image_url
         })
         res.json(updatedHotel)
     } catch (err) {

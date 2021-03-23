@@ -56,6 +56,7 @@ router.put('/:id', async (req, res) => {
             weight: req.body.weight,
             special_needs: req.body.special_needs,
             medications: req.body.medications
+            image_url: req.body.image_url
         })
         res.json(updatedPet)
     } catch (err) {
