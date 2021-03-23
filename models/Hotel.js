@@ -7,7 +7,8 @@ const hotelSchema = new mongoose.Schema({
     specialty: String,
     weight_limit_lb: Number,
     phone_number: Number,
-    email: String
+    email: String,
+    image_url: String
 })
 
 const Hotel = mongoose.model('Hotel', hotelSchema)
