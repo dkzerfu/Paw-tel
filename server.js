@@ -22,7 +22,13 @@ app.use(express.json())
 // request body parser
 app.use(express.json())
 
-app.get('/', (req, res) => {
+const middlesware = (req, res, next) => {
+    console.log('hello from a middleware 👋')
+    next()
+  }
+
+
+app.get('/', middlesware, (req, res) => {
     res.json({msg: 'hello world'})
 })
 
