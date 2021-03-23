@@ -23,7 +23,6 @@ app.use(express.json())
 app.use(express.json())
 
 const middlesware = (req, res, next) => {
-    console.log('hello from a middleware 👋')
     next()
   }
 
