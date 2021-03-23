@@ -15,6 +15,13 @@ const rowdyResults = rowdy.begin(app)
 // middlewares
 app.use(morgan('tiny'))
 app.use(cors())
+// body parser
+app.use(express.urlencoded({ extended: false }))
+app.use(express.json())
+
+// controllers
+app.use('/hotels', require('./controllers/HotelController'))
+
 
 // request body parser
 app.use(express.json())
