@@ -1,10 +1,29 @@
 const router = require('express').Router()
-const Pet = require('../../models/Pet')
+const user = require('../../models/user')
+// const Pet = require('../../models/Pet')
 
 // Create
+// router.post('/', async (req, res) => {
+//     try {
+//         const newPet = new Pet.create({
+//             pet_name: req.body.pet_name,
+//             breed: req.body.breed,
+//             age: req.body.age,
+//             weight: req.body.weight,
+//             special_needs: req.body.special_needs,
+//             medications: req.body.medications,
+//             image_url: req.body.image_url
+//         })
+//         res.json(newPet)
+//     } catch(err) {
+//         console.log(err)
+//         res.status(400).json({ msg: 'Unable to register pet' })
+//     }
+// })
+
 router.post('/', async (req, res) => {
     try {
-        const newPet = await Pet.create({
+        const newPet = new Pet({
             pet_name: req.body.pet_name,
             breed: req.body.breed,
             age: req.body.age,
@@ -13,6 +32,13 @@ router.post('/', async (req, res) => {
             medications: req.body.medications,
             image_url: req.body.image_url
         })
+        const foundUser = await user.findOne({
+            where: {
+                id: res.locals.user._id
+            }
+        })
+        foundUser.pets.push(newPet)
+        foundUser.save()
         res.json(newPet)
     } catch(err) {
         console.log(err)
@@ -23,7 +49,11 @@ router.post('/', async (req, res) => {
 // Read (Index)
 router.get('/', async(req, res) => {
     try {
-        const allPets = await Pet.find({})
+        const allPets = await user.findOne({
+            where: {
+                id: res.locals.user._id
+            }
+        }).populate('pets')
         res.json(allPets)
     } catch (err) {
         console.log(err)

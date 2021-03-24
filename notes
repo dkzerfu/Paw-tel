@@ -1,6 +1,6 @@
 git remote -v
 
-git remote add upstream git@github.com:kchu01/Paw-tel.git
+git remote add upstream github link
 
 
 git remote -v
