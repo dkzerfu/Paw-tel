@@ -21,11 +21,15 @@ const UserSchema = new mongoose.Schema({
     password: {
         type: String
     },
-    date:{
+    date: {
         type: Date,
         default: Date.now
     },
-    pets: [petSchema]
+    pets: [petSchema],
+    isHost: {
+        type: Boolean,
+        default: false
+    }
 })
 
 module.exports = User = mongoose.model('users', UserSchema)
