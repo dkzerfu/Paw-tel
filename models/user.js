@@ -1,5 +1,16 @@
 const mongoose = require('mongoose')
 
+//Subdocument Schema
+const petSchema = new mongoose.Schema({
+    pet_name: String,
+    breed: String,
+    age: Number,
+    weight: Number,
+    special_needs: String,
+    medications: String,
+    image_url: String
+})
+
 const UserSchema = new mongoose.Schema({
     
     name: {
@@ -11,10 +22,16 @@ const UserSchema = new mongoose.Schema({
     password: {
         type: String
     },
-    date:{
+    date: {
         type: Date,
         default: Date.now
+    },
+    pets: [petSchema],
+    isHost: {
+        type: Boolean,
+        default: false
     }
 })
 
 module.exports = User = mongoose.model('users', UserSchema)
+module.exports = Pet = mongoose.model('Pet', petSchema)
