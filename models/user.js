@@ -10,9 +10,13 @@ const UserSchema = new mongoose.Schema({
     password: {
         type: String
     },
-    date:{
+    date: {
         type: Date,
         default: Date.now
+    },
+    isHost: {
+        type: Boolean,
+        default: false
     }
 })
 

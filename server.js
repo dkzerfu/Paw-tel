@@ -24,16 +24,15 @@ app.use(express.json())
 
 const middlesware = (req, res, next) => {
     next()
-  }
+}
 
 
 app.get('/', middlesware, (req, res) => {
-    res.json({msg: 'hello world'})
+    res.json({ msg: 'hello world' })
 })
 
 // Controllers
-app.use('/api-v1/users', require('./controllers/api-v1/users'))
-app.use('/api-v1/hosts', require('./controllers/api-v1/HostController'))
+app.use('/api-v1/users', require('./controllers/api-v1/UserController'))
 app.use('/api-v1/hotels', require('./controllers/api-v1/HotelController'))
 app.use('/api-v1/pets', require('./controllers/api-v1/PetController'))
 
