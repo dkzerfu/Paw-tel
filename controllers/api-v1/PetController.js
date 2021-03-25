@@ -4,6 +4,7 @@ const authLockedRoute = require('./authLockedRoute')
 
 router.post('/', authLockedRoute, async (req, res) => {
     try {
+        console.log(res.locals, '#####################')
         const newPet = new Pet({
             pet_name: req.body.pet_name,
             breed: req.body.breed,
@@ -11,7 +12,8 @@ router.post('/', authLockedRoute, async (req, res) => {
             weight: req.body.weight,
             special_needs: req.body.special_needs,
             medications: req.body.medications,
-            image_url: req.body.image_url
+            image_url: req.body.image_url,
+            //user_id: res.locals.user._id
         })
         let id = res.locals.user._id
         const foundUser = await User.findById(id)
