@@ -32,5 +32,10 @@ const UserSchema = new mongoose.Schema({
     }
 })
 
-module.exports = User = mongoose.model('users', UserSchema)
-module.exports = Pet = mongoose.model('Pet', petSchema)
+const User = mongoose.model('users', UserSchema)
+
+const Pet = mongoose.model('Pet', petSchema)
+
+module.exports = {
+    User, Pet
+}

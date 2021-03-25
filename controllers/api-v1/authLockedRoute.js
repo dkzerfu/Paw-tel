@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const User = require('../../models/user.js')
+const { User } = require('../../models/user.js')
 
 // route specific middleware for jwt auth
 const authLockedRoute = async (req, res, next) => {
@@ -12,10 +12,10 @@ const authLockedRoute = async (req, res, next) => {
 
     // find the user from the db
     const foundUser = await User.findById(decode.id)
-   
+
     res.locals.user = foundUser
     next()
-  } catch(error) {
+  } catch (error) {
     console.log(error)
     res.status(400).json({ msg: 'auth failed' })
   }
