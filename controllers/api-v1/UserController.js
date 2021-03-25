@@ -8,7 +8,7 @@ const authLockRoute = require('./authLockedRoute')
 // GET/users
 
 router.get('/', (req, res) => {
-  console.log('hello')
+  console.log(res.locals.user._id, '#######################')
   res.json({ msg: 'hello from users' })
 })
 
@@ -88,7 +88,16 @@ router.post('/login', async (req, res) => {
 })
 
 
-router.get('/auth-locked', authLockRoute, (req, res) => {
+router.get('/auth-locked', authLockRoute, async (req, res) => {
+  try{
+    const foundUser =  await User.findById(
+      res.locals.user._id
+   ).populate("hostHotels")
+
+   res.json(foundUser.hostHotels)
+  }catch(error){
+    console.log(error)
+  }
   res.json({ msg: 'Welcome to the private rouote!' })
 })
 

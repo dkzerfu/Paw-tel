@@ -8,7 +8,8 @@ const petSchema = new mongoose.Schema({
     weight: Number,
     special_needs: String,
     medications: String,
-    image_url: String
+    image_url: String,
+    user_id: String
 })
 
 const Pet = mongoose.model('Pet', petSchema)

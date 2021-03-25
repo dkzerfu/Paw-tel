@@ -12,6 +12,7 @@ const petSchema = new mongoose.Schema({
 })
 
 const UserSchema = new mongoose.Schema({
+    
     name: {
         type: String
     },
@@ -25,6 +26,10 @@ const UserSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
+    hostHotels: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Hotel"
+    }],
     pets: [petSchema],
     isHost: {
         type: Boolean,
