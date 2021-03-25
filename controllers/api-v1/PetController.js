@@ -13,9 +13,8 @@ router.post('/', authLockedRoute, async (req, res) => {
             medications: req.body.medications,
             image_url: req.body.image_url
         })
-        const foundUser = await User.findOne({
-            id: res.locals.user._id
-        })
+        let id = res.locals.user._id
+        const foundUser = await User.findById(id)
         newPet.save()
         foundUser.pets.push(newPet)
         await foundUser.save()
@@ -31,7 +30,6 @@ router.get('/', authLockedRoute, async(req, res) => {
     try {
         let id = res.locals.user._id
         const allPets = await User.findById(id).populate('pets')
-        console.log(allPets)
         res.json(allPets)
     } catch (err) {
         console.log(err)
