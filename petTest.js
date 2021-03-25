@@ -1,9 +1,9 @@
 require ('./models')
-const Pet = require('./models/Pet')
+const { User, Pet } = require('./models/user')
 
 // Create
 async function createPet() {
-    const newPet = await Pet.create({
+    const newPet = new Pet({
         pet_name: 'Fluffy',
         breed: 'Persian',
         age: 16,
@@ -11,9 +11,15 @@ async function createPet() {
         special_needs: 'Shy around humans',
         medications: 'Eyedrops 2x daily'
     })
-    console.log(newPet)
+    const foundUser = await User.findOne({
+        name: 'moop'
+    })
+    newPet.save()
+    foundUser.pets.push(newPet)
+    await foundUser.save()
+    console.log(foundUser)
 }
-// createPet()
+createPet()
 
 // Read (Index)
 async function readAllPets() {

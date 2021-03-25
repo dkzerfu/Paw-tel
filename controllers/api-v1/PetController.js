@@ -1,27 +1,8 @@
 const router = require('express').Router()
-const user = require('../../models/user')
-// const Pet = require('../../models/Pet')
+const { User, Pet } = require('../../models/user')
+const authLockedRoute = require('./authLockedRoute')
 
-// Create
-// router.post('/', async (req, res) => {
-//     try {
-//         const newPet = new Pet.create({
-//             pet_name: req.body.pet_name,
-//             breed: req.body.breed,
-//             age: req.body.age,
-//             weight: req.body.weight,
-//             special_needs: req.body.special_needs,
-//             medications: req.body.medications,
-//             image_url: req.body.image_url
-//         })
-//         res.json(newPet)
-//     } catch(err) {
-//         console.log(err)
-//         res.status(400).json({ msg: 'Unable to register pet' })
-//     }
-// })
-
-router.post('/', async (req, res) => {
+router.post('/', authLockedRoute, async (req, res) => {
     try {
         console.log(res.locals, '#####################')
         const newPet = new Pet({
@@ -34,13 +15,11 @@ router.post('/', async (req, res) => {
             image_url: req.body.image_url,
             //user_id: res.locals.user._id
         })
-        const foundUser = await user.findOne({
-            where: {
-                id: res.locals.user._id
-            }
-        })
+        let id = res.locals.user._id
+        const foundUser = await User.findById(id)
+        newPet.save()
         foundUser.pets.push(newPet)
-        foundUser.save()
+        await foundUser.save()
         res.json(newPet)
     } catch(err) {
         console.log(err)
@@ -49,13 +28,10 @@ router.post('/', async (req, res) => {
 })
 
 // Read (Index)
-router.get('/', async(req, res) => {
+router.get('/', authLockedRoute, async(req, res) => {
     try {
-        const allPets = await user.findOne({
-            where: {
-                id: res.locals.user._id
-            }
-        }).populate('pets')
+        let id = res.locals.user._id
+        const allPets = await User.findById(id).populate('pets')
         res.json(allPets)
     } catch (err) {
         console.log(err)
