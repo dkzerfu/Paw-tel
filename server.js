@@ -19,8 +19,6 @@ app.use(cors())
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 
-// request body parser
-app.use(express.json())
 
 const middlesware = (req, res, next) => {
     next()
