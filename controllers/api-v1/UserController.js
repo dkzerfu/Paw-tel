@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const User = require('../../models/user')
+const { User } = require('../../models/user')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const authLockRoute = require('./authLockedRoute')
@@ -31,7 +31,7 @@ router.post('/register', async (req, res) => {
       isHost: req.body.isHost
     })
     await newUser.save()
-
+    console.log('This is the new user', newUser)
     // jwt payload
     const payload = {
       name: newUser.name,
@@ -51,41 +51,41 @@ router.post('/register', async (req, res) => {
   }
 
 })
-  / router.post('/login', async (req, res) => {
-    try {
+router.post('/login', async (req, res) => {
+  try {
 
-      const foundUser = await User.findOne({
-        email: req.body.email
-      })
-
-      const noLoginMessage = 'Incorrect username or password'
-
-
-      if (!foundUser) return res.status(400).json({ msg: noLoginMessage })
+    const foundUser = await User.findOne({
+      email: req.body.email
+    })
+    console.log('This is the user:', foundUser)
+    const noLoginMessage = 'Incorrect username or password'
 
 
-      const matchPassword = await bcrypt.compare(req.body.password, foundUser.password)
+    if (!foundUser) return res.status(400).json({ msg: noLoginMessage })
 
 
-      if (!matchPassword) return res.status(400).json({ msg: noLoginMessage })
+    const matchPassword = await bcrypt.compare(req.body.password, foundUser.password)
 
 
-      const payload = {
-        name: foundUser.name,
-        email: foundUser.email,
-        id: foundUser.id,
-        isHost: foundUser.isHost
-      }
+    if (!matchPassword) return res.status(400).json({ msg: noLoginMessage })
 
 
-      const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: 60 * 60 })
-
-      res.json({ token })
-    } catch (error) {
-      console.log(error)
-      res.status(500).json({ msg: 'server error AHHHHHH!' })
+    const payload = {
+      name: foundUser.name,
+      email: foundUser.email,
+      id: foundUser.id,
+      isHost: foundUser.isHost
     }
-  })
+
+
+    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: 60 * 60 })
+
+    res.json({ token })
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ msg: 'server error AHHHHHH!' })
+  }
+})
 
 
 router.get('/auth-locked', authLockRoute, (req, res) => {
