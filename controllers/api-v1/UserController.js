@@ -88,19 +88,38 @@ router.post('/login', async (req, res) => {
 })
 
 
-router.get('/auth-locked', authLockRoute, async (req, res) => {
-  try{
-    const foundUser =  await User.findById(
-      res.locals.user._id
-   ).populate("hostHotels")
 
-   res.json(foundUser.hostHotels)
-  }catch(error){
+router.get('/auth-locked', authLockRoute, async (req, res) => {
+  try {
+    const foundUser = await User.findById(
+      res.locals.user._id
+    ).populate("hostHotels")
+
+    res.json(foundUser.hostHotels)
+  } catch (error) {
     console.log(error)
   }
   res.json({ msg: 'Welcome to the private rouote!' })
 })
 
 
+// GET favorites // make it an auth locked route
+// get auth 
+router.post('/favorite', authLockRoute, async (req, res) => {
+  try {
+    let userId = res.locals.user._id
+    const userFav = await User.findById(userId)
+    userFav.favorites.push({
+      hotel_name: req.body.hotel_name,
+      zipcode: req.body.zipcode
+    })
+    await userFav.save()
+    res.json(userFav)
+  } catch (error) {
+    console.log(error)
+    res.status(400).json({ msg: 'Unable to favorite hotels' })
+  }
+
+})
 
 module.exports = router
