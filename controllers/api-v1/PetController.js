@@ -74,7 +74,7 @@ router.put('/:id', async (req, res) => {
 })
 
 // Delete
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', authLockedRoute, async (req, res) => {
     try {
         const deletedPet = await Pet.findByIdAndDelete(req.params.id)
         res.json(deletedPet)
