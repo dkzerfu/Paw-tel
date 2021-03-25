@@ -1,5 +1,6 @@
 require ('./models')
 const Hotel = require('./models/Hotel')
+const { User } = require('./models/user')
 
 // Create
 async function createHotel() {
@@ -36,12 +37,21 @@ async function readAllHotels() {
 
 // Read (Show)
 async function show() {
+    const foundUser = await User.findById(
+        "605cba523b343a2a1b70fbec"
+    )
     const hotel = await Hotel.findOne({
         hotel_name: 'Dogg Motel'
     })
-    console.log(hotel)
+    if(hotel) {
+        if(foundUser.isHost){
+            foundUser.hostHotels.push(hotel)
+            await foundUser.save()
+        }
+    }
+    console.log(foundUser)
 }
-// show()
+ show()
 
 // Update
 async function update() {

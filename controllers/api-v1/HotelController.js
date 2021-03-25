@@ -1,9 +1,13 @@
 const router = require('express').Router()
 const Hotel = require('../../models/Hotel')
+const { User } = require('../../models/user')
 
 // Create
 router.post('/', async(req, res) => {
     try {
+        const foundUser = await User.findById(
+            res.locals.user._id
+        )
         const newHotel = await Hotel.create({
             hotel_name: req.body.hotel_name,
             zipcode: req.body.zipcode,
@@ -34,8 +38,15 @@ router.get('/', async(req, res) => {
 // Read (Show)
 router.get('/:id', async(req, res) => {
     try {
+        const foundUser = await User.findById(
+            res.locals.user._id
+        )
         const foundHotel = await Hotel.findById(req.params.id)
         if(foundHotel) {
+            if(foundUser.isHost){
+                foundUser.hostHotels.push(foundHotel)
+                await foundUser.save()
+            }
             res.json(foundHotel)
         }
     } catch (err) {
