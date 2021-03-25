@@ -23,6 +23,7 @@ const user = require('../../models/user')
 
 router.post('/', async (req, res) => {
     try {
+        console.log(res.locals, '#####################')
         const newPet = new Pet({
             pet_name: req.body.pet_name,
             breed: req.body.breed,
