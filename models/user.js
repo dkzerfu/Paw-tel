@@ -20,8 +20,14 @@ const hotelSchema = new mongoose.Schema({
     image_url: String
 })
 
+//fav schema
+const favoriteSchema = new mongoose.Schema({
+    hotel_name: String,
+    zipcode: Number
+})
+
 const UserSchema = new mongoose.Schema({
-    
+
     name: {
         type: String
     },
@@ -44,7 +50,8 @@ const UserSchema = new mongoose.Schema({
     isHost: {
         type: Boolean,
         default: false
-    }
+    },
+    favorites: [favoriteSchema]
 })
 
 const User = mongoose.model('users', UserSchema)

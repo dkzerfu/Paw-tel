@@ -1,4 +1,4 @@
-require ('./models')
+require('./models')
 const Hotel = require('./models/Hotel')
 const { User } = require('./models/user')
 
@@ -43,8 +43,8 @@ async function show() {
     const hotel = await Hotel.findOne({
         hotel_name: 'Dogg Motel'
     })
-    if(hotel) {
-        if(foundUser.isHost){
+    if (hotel) {
+        if (foundUser.isHost) {
             foundUser.hostHotels.push(hotel)
             await foundUser.save()
         }
@@ -52,6 +52,7 @@ async function show() {
     console.log(foundUser)
 }
  //show()
+//show()
 
 // Update
 async function update() {
