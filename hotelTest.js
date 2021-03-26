@@ -51,7 +51,8 @@ async function show() {
     }
     console.log(foundUser)
 }
-show()
+ //show()
+//show()
 
 // Update
 async function update() {
