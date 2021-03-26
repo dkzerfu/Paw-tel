@@ -40,16 +40,13 @@ async function show() {
 // Update
 async function update() {
     const foundUser = await User.findById("605c187321a0fc12be7c806f").populate('pets')
-    const updatedPet = foundUser.pets.id("605cfb21ba29bb31daced039")
-
-    const updatedPet = await Pet.findOneAndUpdate({
-        pet_name: 'Fluffy'
-    }, {
-        medications: 'Eyedrops 1x daily'
-    })
+    const updatedPet = foundUser.pets.id("605cf5edba29bb31daced031")
+    // const User.pets.id({ foundUser }, { '$set': { updatedPet: {medications: "none"  }} } )
+    updatedPet.medications = "none"
     console.log(updatedPet)
+    await foundUser.save()
 }
-// update()
+update()
 
 // Delete
 async function deletePet() {
@@ -59,5 +56,5 @@ async function deletePet() {
     await foundUser.save()
     console.log(deletedPet)
 }
-deletePet()
+// deletePet()
 

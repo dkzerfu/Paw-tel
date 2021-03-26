@@ -55,17 +55,21 @@ router.get('/:id', async(req, res) => {
 })
 
 // Update
-router.put('/:id', async (req, res) => {
+router.put('/:id', authLockedRoute, async (req, res) => {
     try {
-        const updatedPet = await Pet.findByIdAndUpdate(req.params.id, {
-            pet_name: req.body.pet_name,
-            breed: req.body.breed,
-            age: req.body.age,
-            weight: req.body.weight,
-            special_needs: req.body.special_needs,
-            medications: req.body.medications,
-            image_url: req.body.image_url
-        })
+        let id = res.locals.user._id
+        const foundUser = await User.findById(id).populate('pets')
+        const updatedPet = foundUser.pets.id(req.params.id)
+
+        updatedPet.pet_name = req.body.pet_name,
+        updatedPet.breed = req.body.breed,
+        updatedPet.age = req.body.age,
+        updatedPet.weight = req.body.weight,
+        updatedPet.special_needs = req.body.special_needs,
+        updatedPet.medications = req.body.medications,
+        updatedPet.image_url = req.body.image_url
+
+        await foundUser.save()
         res.json(updatedPet)
     } catch (err) {
         console.log(err)
@@ -83,8 +87,7 @@ router.delete('/:id', authLockedRoute, async (req, res) => {
         const deletedPet = foundUser.pets.id(req.params.id)
         foundUser.pets.remove(deletedPet)
         await foundUser.save()
-        console.log("sheep")
-        res.redirect('/')
+        res.json(deletedPet)
     } catch (err) {
         console.log(err)
         res.json({
