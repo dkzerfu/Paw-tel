@@ -1,20 +1,59 @@
 const mongoose = require('mongoose')
 
-const MONGO_URL = process.env.MONGO_URL || 'mongodb://localhost/pawtel'
+if(process.env.NODE_ENV === 'development'){
+    const MONGO_URL = process.env.MONGO_URL || 'mongodb://localhost/pawtel'
+    
+    mongoose.connect(MONGO_URL, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true,
+        useUnifiedTopology: false
+    })
+    
+    const db = mongoose.connection
+    
+    db.once('open', () => {
+        console.log(`mongoDB connection @ ${db.host}:${db.port}`)
+    })
+    
+    db.on('error', () => {
+        console.error(`someting has gone wrong with the DB \n ${err}`)
+    })
+}else{
+    //username
+    //dagm_zerfu
+    // password
+    //hello
+    
+    //mongo db atlas code here
+    const MongoClient = require('mongodb').MongoClient;
 
-mongoose.connect(MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useUnifiedTopology: false
-})
+    const uri = process.env.ATLAS_URI
 
-const db = mongoose.connection
+    const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
-db.once('open', () => {
-    console.log(`mongoDB connection @ ${db.host}:${db.port}`)
-})
+    client.connect(err => {
+    const collection = client.db("test").collection("devices");
+    // perform actions on the collection object
+    client.close();
+});
 
-db.on('error', () => {
-    console.error(`someting has gone wrong with the DB \n ${err}`)
-})
+    // connect to orm
+    mongoose.connect(uri, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true,
+        useUnifiedTopology: false
+    })
+    
+    const db = mongoose.connection
+    
+    db.once('open', () => {
+        console.log(`mongoDB connection @ ${db.host}:${db.port}`)
+    })
+    
+    db.on('error', () => {
+        console.error(`someting has gone wrong with the DB \n ${err}`)
+    })
+
+}
