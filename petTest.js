@@ -19,7 +19,7 @@ async function createPet() {
     await foundUser.save()
     console.log(foundUser)
 }
-createPet()
+// createPet()
 
 // Read (Index)
 async function readAllPets() {
@@ -50,10 +50,11 @@ async function update() {
 
 // Delete
 async function deletePet() {
-    const deletedPet = await Pet.deleteOne({
-        pet_name: 'Fluffy'
-    })
+    const foundUser = await User.findById("605c187321a0fc12be7c806f").populate('pets')
+    const deletedPet = foundUser.pets.id("605d0ec32aefdf3bdbe44ab8")
+    foundUser.pets.remove(deletedPet)
+    await foundUser.save()
     console.log(deletedPet)
 }
-// deletePet()
+deletePet()
 

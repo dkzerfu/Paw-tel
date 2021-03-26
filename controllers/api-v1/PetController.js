@@ -78,7 +78,12 @@ router.put('/:id', async (req, res) => {
 // Delete
 router.delete('/:id', authLockedRoute, async (req, res) => {
     try {
-        const deletedPet = await Pet.findByIdAndDelete(req.params.id)
+        let id = res.locals.user._id
+        const foundUser = await User.findById(id).populate('pets')
+        const deletedPet = foundUser.pets.id(req.params.id)
+        foundUser.pets.remove(deletedPet)
+        await foundUser.save()
+        console.log("sheep")
         res.json(deletedPet)
     } catch (err) {
         console.log(err)
