@@ -84,7 +84,7 @@ router.delete('/:id', authLockedRoute, async (req, res) => {
         foundUser.pets.remove(deletedPet)
         await foundUser.save()
         console.log("sheep")
-        res.json(deletedPet)
+        res.redirect('/')
     } catch (err) {
         console.log(err)
         res.json({
