@@ -100,7 +100,6 @@ router.get('/auth-locked', authLockRoute, async (req, res) => {
   } catch(error) {
     console.log(error)
   }
-  res.json({ msg: 'Welcome to the private rouote!' })
 })
 
 
