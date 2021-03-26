@@ -1,13 +1,12 @@
 const router = require('express').Router()
-const Hotel = require('../../models/Hotel')
+const {Hotel} = require('../../models/user')
 const { User } = require('../../models/user')
+const authLockedRoute = require('./authLockedRoute')
 
 // Create
-router.post('/', async(req, res) => {
+router.post('/',  authLockedRoute, async(req, res) => {
+    console.log(res.locals.user)
     try {
-        const foundUser = await User.findById(
-            res.locals.user._id
-        )
         const newHotel = await Hotel.create({
             hotel_name: req.body.hotel_name,
             zipcode: req.body.zipcode,
@@ -17,7 +16,14 @@ router.post('/', async(req, res) => {
             email: req.body.email,
             image_url: req.body.image_url
         })
+        
+        const foundUser = await User.findById(res.locals.user._id)
+        newHotel.save()
+        foundUser.properties.push(newHotel)
+        await foundUser.save()
         res.json(newHotel)
+           
+        
     } catch(err) {
         console.log(err)
         res.status(400).json({ msg: 'Unable to register hotel' })

@@ -10,6 +10,15 @@ const petSchema = new mongoose.Schema({
     medications: String,
     image_url: String
 })
+const hotelSchema = new mongoose.Schema({
+    hotel_name: String,
+    zipcode: Number,
+    specialty: String,
+    weight_limit_lb: Number,
+    phone_number: Number,
+    email: String,
+    image_url: String
+})
 
 //fav schema
 const favoriteSchema = new mongoose.Schema({
@@ -36,6 +45,7 @@ const UserSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Hotel"
     }],
+    properties:[hotelSchema],
     pets: [petSchema],
     isHost: {
         type: Boolean,
@@ -48,6 +58,8 @@ const User = mongoose.model('users', UserSchema)
 
 const Pet = mongoose.model('Pet', petSchema)
 
+const Hotel = mongoose.model('Hotel', hotelSchema)
+
 module.exports = {
-    User, Pet
+    User, Pet, Hotel
 }
