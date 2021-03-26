@@ -4,9 +4,7 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const authLockRoute = require('./authLockedRoute')
 
-
 // GET/users
-
 router.get('/', (req, res) => {
   console.log(res.locals.user._id, '#######################')
   res.json({ msg: 'hello from users' })
@@ -87,24 +85,21 @@ router.post('/login', async (req, res) => {
   }
 })
 
-
-
 router.get('/auth-locked', authLockRoute, async (req, res) => {
   try {
     const foundUser = await User.findById(
       res.locals.user._id
-   )
-      const hotels = foundUser.properties
-   res.json({hotels})
-   
-  } catch(error) {
+    )
+    const hotels = foundUser.properties
+    res.json({ hotels })
+    // res.json({ msg: 'Welcome to the private rouote!' })
+
+  } catch (error) {
     console.log(error)
   }
 })
 
-
-// GET favorites // make it an auth locked route
-// get auth 
+// post favorite
 router.post('/favorite', authLockRoute, async (req, res) => {
   try {
     let userId = res.locals.user._id
@@ -119,7 +114,22 @@ router.post('/favorite', authLockRoute, async (req, res) => {
     console.log(error)
     res.status(400).json({ msg: 'Unable to favorite hotels' })
   }
+})
 
+// get favorite
+router.get('/favorite', authLockRoute, async (req, res) => {
+  try {
+    let userId = res.locals.user._id
+    const userFav = await User.findById(userId)
+    const favorites = userFav.favorites
+
+    // console.log(favorites)
+
+    res.json({ favorites })
+  } catch (error) {
+    console.log(error)
+    res.status(400).json({ msg: 'Unable to find favorite hotels' })
+  }
 })
 
 module.exports = router

@@ -45,7 +45,7 @@ const UserSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Hotel"
     }],
-    properties:[hotelSchema],
+    properties: [hotelSchema],
     pets: [petSchema],
     isHost: {
         type: Boolean,
