@@ -92,8 +92,8 @@ router.get('/auth-locked', authLockRoute, async (req, res) => {
   try{
     const foundUser =  await User.findById(
       res.locals.user._id
-   ).populate("hostHotels")
-      const hotels = foundUser.hostHotels
+   )
+      const hotels = foundUser.properties
    res.json({hotels})
    res.json({ msg: 'Welcome to the private rouote!' })
   }catch(error){
