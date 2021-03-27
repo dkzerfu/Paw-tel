@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "dependencies": {
+    "@heroku/buildpack-registry": "^1.0.1",
     "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
@@ -33,8 +34,7 @@
   "devDependencies": {
     "nodemon": "^2.0.7"
   },
-  "engines": { 
-    "node": "14.16.0" 
+  "engines": {
+    "node": "14.16.0"
   }
 }
-
