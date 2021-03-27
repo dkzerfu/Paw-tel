@@ -75,6 +75,10 @@ router.put('/:id', async (req, res) => {
             email: req.body.email,
             image_url: req.body.image_url
         })
+        const foundUser = await User.findById(res.locals.user._id)
+        updatedHotel.save()
+        foundUser.properties.push(updatedHotel)
+        await foundUser.save()
         res.json(updatedHotel)
     } catch (err) {
         console.log(err)
